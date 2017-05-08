@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Item ct:</strong>
+  <%= @purchase.item_ct %>
+</p>
+
+<p>
+  <strong>Item:</strong>
+  <%= @purchase.item %>
+</p>
+
+<p>
+  <strong>Account:</strong>
+  <%= @purchase.account %>
+</p>
+
+<%= link_to 'Edit', edit_purchase_path(@purchase) %> |
+<%= link_to 'Back', purchases_path %>

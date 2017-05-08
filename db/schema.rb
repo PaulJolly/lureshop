@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508113841) do
+ActiveRecord::Schema.define(version: 20170508230833) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,16 @@ ActiveRecord::Schema.define(version: 20170508113841) do
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.integer "item_ct"
+    t.integer "item_id"
+    t.integer "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_carts_on_account_id"
+    t.index ["item_id"], name: "index_carts_on_item_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -40,12 +50,14 @@ ActiveRecord::Schema.define(version: 20170508113841) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password"
-    t.boolean "is_admin"
+  create_table "purchases", force: :cascade do |t|
+    t.integer "item_ct"
+    t.integer "item_id"
+    t.integer "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_purchases_on_account_id"
+    t.index ["item_id"], name: "index_purchases_on_item_id"
   end
 
 end
