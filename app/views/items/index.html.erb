@@ -5,6 +5,9 @@
     <h1>Items</h1>
   </div>
 </div>
+<% if is_current_account_admin %>
+  <%= link_to 'New Item', new_item_path %>
+<% end %>
 
 <div class="row small-up-2 medium-up-3">
   <% @items.each do |item| %>
@@ -16,8 +19,10 @@
       <%= item.rating %>
       <%= item.manufacturer %>
       <%= link_to 'Show', item %>
-      <%= link_to 'Edit', edit_item_path(item) %>
-      <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if is_current_account_admin %>
+        <%= link_to 'Edit', edit_item_path(item) %>
+        <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </div>
   <% end %>
 </div>

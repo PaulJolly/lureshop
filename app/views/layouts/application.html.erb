@@ -14,6 +14,9 @@
   <body>
     <%if account_signed_in? %>
       <%= current_account.email %>
+      <% if is_current_account_admin %>
+        <p>Welcome Admin</p>
+      <% end %>
       <%= link_to 'Cart', 'carts#index' %>
       <%= link_to 'Purchases', 'purchases#index' %>
       <%= link_to "Sign out", destroy_account_session_path, :method => :delete %>
