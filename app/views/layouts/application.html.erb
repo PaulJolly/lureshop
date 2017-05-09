@@ -12,8 +12,17 @@
   </head>
 
   <body>
-
+    <%if account_signed_in? %>
+      <%= current_account.email %>
+      <%= link_to 'Cart', 'carts#index' %>
+      <%= link_to 'Purchases', 'purchases#index' %>
+      <%= link_to "Sign out", destroy_account_session_path, :method => :delete %>
+    <% else %>
+      <%= link_to 'Register', new_account_registration_path %>
+      <%= link_to 'Sign in', new_account_session_path %>
+    <% end %>
     <%= yield %>
+
 
   </body>
 </html>

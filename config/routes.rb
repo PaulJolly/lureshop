@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :carts
   resources :purchases
-  devise_for :accounts
+  devise_for :accounts, controllers: { sessions: 'accounts/sessions' }
   resources :items
 
   root "items#index"
